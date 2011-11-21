@@ -49,9 +49,15 @@ if ($productcheck) {
 					</span>
 				
 			</td></tr><tr><td style="border:none; vertical-align:middle;">
-			<!--{if !OptionSet}-->
-			<input type="submit" class="buy" data-theme="e" value="Add to Cart" /><br/>
-			<!--{/if}-->
+			<?php
+			if (zen_has_product_attributes($listing->fields['products_id'])) { 
+				echo ' ';
+			} else {
+			?>
+				<input type="submit" class="buy" data-theme="e" value="Add to Cart" /><br/>
+			<?php
+			}
+			?>
 				<a href="<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
 			</td></tr></table>
 		</form>

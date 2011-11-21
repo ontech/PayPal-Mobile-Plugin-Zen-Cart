@@ -3,33 +3,19 @@
 <h1>Cart</h1>
 <?php echo zen_draw_form('cart_quantity', zen_href_link(FILENAME_SHOPPING_CART, 'action=update_product', 'NONSSL')); ?>
 
-<style type="text/css">
-table {
-	background:#fff;
-	border-radius:10px;
-	border-collapse:collapse;
-}
-table th {
-	text-align:left;
-	background:#eee;
-	padding:4px;
-}
+<?php
 
-.update input,
-.update span,
-.update div {
-	display:none;
-}
-table td {
-	padding:4px;
-	vertical-align:middle !important;
-}
-table td input[type="text"] {
-	width:28px;
-}
-</style>
+	$cartempty = $_SESSION['cart']->count_contents();
+	
+	if ($cartempty == 0) {
+	
+	echo '<p>Your cart is empty</p>';
+	
+	} else {
 
-<table>
+?>
+
+<table cellpadding="4" align="center" id="cart">
 <tr>
 	<th>Qty</th>
 	<th> </th>
@@ -62,12 +48,12 @@ table td input[type="text"] {
 	</td>
 	<td><?php echo $product['productsName']; ?> </td>
 	<td><?php echo $product['productsPrice']; ?> </td>
-	<td>
+	<td align="center">
            <a href="/index.php?main_page=shopping_cart&action=remove_product&product_id=<?php echo $product['id']; ?>"><img src="mobile/images/delete.png" /></a>
 	</td>
 </tr>
 <tr>
-	<td colspan="4">
+	<td colspan="5">
 		<?php
 		  echo $product['attributeHiddenField'];
 		  if (isset($product['attributes']) && is_array($product['attributes'])) {
@@ -94,7 +80,7 @@ table td input[type="text"] {
 	<td><?php echo $cartShowTotal; ?> </td>
 </tr>
 <tr>
-<td colspan="4" style="text-align:center;">
+<td colspan="5" style="text-align:center;">
 <input type="submit" value="Update Cart">
 </td>
 </tr>
@@ -105,6 +91,10 @@ table td input[type="text"] {
 		    <img src="mobile/images/btn_checkout_278x43.png" />
     </a>
 </div>
+
+<?php
+	}
+?>
 
 </form>
 

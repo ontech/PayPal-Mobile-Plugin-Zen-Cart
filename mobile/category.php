@@ -31,12 +31,10 @@ $subcategories = zen_get_categories('', $current_category_id);
 <?php
 
 $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_PRODUCTS_LISTING, 'p.products_id', 'page');
-//print_r ($listing_split);
 $listing = $db->Execute($listing_split->sql_query);
 $productcheck = $listing->fields['products_id'];
 
 if ($productcheck) {
-
 ?>
 <ul data-role="listview" data-inset="true" id="products" class="products" style="margin-top: 8px;">
 	<li data-role="list-divider">Products</li>
@@ -79,10 +77,17 @@ if ($productcheck) {
 					</span>
 				
 			</td></tr><tr><td style="border:none; vertical-align:middle;">
-			<!--{if !OptionSet}-->
-			<input type="submit" class="buy" data-theme="e" value="Add to Cart" /><br/>
-			<!--{/if}-->
-				<a href="<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+
+			<?php
+			if (zen_has_product_attributes($listing->fields['products_id'])) { 
+				echo ' ';
+			} else {
+			?>
+				<input type="submit" class="buy" data-theme="e" value="Add to Cart" /><br/>
+			<?php
+			}
+			?>
+				<a href="/prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
 			</td></tr></table>
 		</form>
 		<!--{/if}-->
