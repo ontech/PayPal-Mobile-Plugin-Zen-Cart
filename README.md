@@ -9,7 +9,7 @@ PayPal Mobile Plugin Installation Instructions
     + b. Under the 'My Account' tab, click 'Profile'
     + c. Under the 'Selling Online' section, click the 'Update' button next the API Access line.
     + d. Under Option 2 on the next screen, click 'View API Signature'
-    + e. You will use these details on the page to fill out the API credentials in OsCommerce.
+    + e. You will use these details on the page to fill out the API credentials in Zen Cart.
     + f. Login to Zen Cart
     + g. Go to Modules -> Payment and click on PayPal Express checkout.
     + h. Use the details from step 2e. and copy and paste the details accross.
