@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 
-<h2>
+<div>
 	<?php   for ($i=0;$i<sizeof($breadcrumb->_trail);$i++) { ?>
 	<?php 
 	$str = end(explode('_', $breadcrumb->_trail[$i]['link']));	
@@ -15,10 +15,11 @@
 		};
 		echo $breadcrumb->_trail[$i]['title']; ?></a> >
 	<?php } ?>
-</h2>
+</div>
 
 <?php
 $subcategories = zen_get_categories('', $current_category_id);
+
 ?>
 
 <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
@@ -32,9 +33,8 @@ $subcategories = zen_get_categories('', $current_category_id);
 
 $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_PRODUCTS_LISTING, 'p.products_id', 'page');
 $listing = $db->Execute($listing_split->sql_query);
-$productcheck = $listing->fields['products_id'];
 
-if ($productcheck) {
+if (!$listing->EOF) {
 ?>
 <ul data-role="listview" data-inset="true" id="products" class="products" style="margin-top: 8px;">
 	<li data-role="list-divider">Products</li>
@@ -102,7 +102,7 @@ if ($productcheck) {
 
 		$listing->MoveNext();
 	}
-} else {
+} else if(!$subcategories) {
 
 echo '<p>There are no products in this category</p>';
 
