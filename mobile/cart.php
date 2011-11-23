@@ -76,8 +76,8 @@
 }
 ?>
 <tr>
-	<td colspan="3" align="right">Total</td>
-	<td><?php echo $cartShowTotal; ?> </td>
+	<td colspan="3" align="right" style="font-weight: bolder;">Total (<?php echo $_SESSION['currency']; ?>)</td>
+	<td style="font-weight: bolder;"><?php echo $cartShowTotal; ?> </td>
 </tr>
 <tr>
 <td colspan="5" style="text-align:center;">
