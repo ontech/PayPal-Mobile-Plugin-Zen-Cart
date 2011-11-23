@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 
-<h2>Search Results</h2>
+<div>Search Results</div>
 
 <form action="/search?main_page=advanced_search_result" method="get" class="searchpopup">
 	<table><tr><td>
