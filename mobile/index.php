@@ -58,7 +58,7 @@ if ($productcheck) {
 			<?php
 			}
 			?>
-				<a href="<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+				<a href="/prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id'];?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
 			</td></tr></table>
 		</form>
 		<!--{/if}-->
