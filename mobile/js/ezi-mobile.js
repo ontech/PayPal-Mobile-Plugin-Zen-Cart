@@ -7,9 +7,8 @@ $("[data-role=page]").live('pageshow', function(){
 
 	$('.productform').submit(function(evt) {
 
-		//var formdata = $(this).serialize();
-		//alert(formdata);
-	
+		$("INPUT[type=submit]:enabled").attr("disabled", "disabled").attr("data-mobile", "disabled");
+
 		if(MiniCart)
 		{
 			$("#cartpanel").children().remove();
@@ -28,7 +27,9 @@ $("[data-role=page]").live('pageshow', function(){
 					currentquantity = 0;
 			},				
 			complete : function() {
-				$.mobile.hidePageLoadingMsg();				
+				$.mobile.hidePageLoadingMsg();
+
+				$("INPUT[data-mobile=disabled]").removeAttr("disabled");
 
 				$.ajax({
 					type: "GET",
