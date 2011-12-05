@@ -1,5 +1,12 @@
 <?php
 
+	if($_GET["main_page"] == "login")
+	{
+		unset($_SESSION['paypal_ec_token']);
+		header("HTTP/1.1 303 See Other");
+		header("Location: http://".$_SERVER[HTTP_HOST]."/ipn_main_handler.php?type=ec");
+	}
+
 	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
   
@@ -46,6 +53,7 @@ if(matchhome())
 function matchcart(){
 	global $productArray;
 	global $cartShowTotal;
+	global $currency_code;
 	$subject = $_SERVER['REQUEST_URI'];
 	$pattern = '/index.php\?main_page=shopping_cart/';
 	preg_match($pattern, $subject, $matches);
@@ -109,6 +117,18 @@ if(matchcategory())
 	include 'mobile/category.php';
 	die();
 }
+
+function matchcookies() {
+	$subject = $_SERVER['REQUEST_URI'];
+	$pattern = '/cookies.php/';
+	preg_match($pattern, $subject, $matches);
+	if ($matches) {
+		include 'mobile/cookies.php';
+		die();
+	}
+}
+matchcookies();
+
 
 function matchproduct(){
 	global $sql;

@@ -19,7 +19,7 @@
     $product_info = $db->Execute($sql);
 ?>
 
-<h2>
+<div>
 	<?php
 		$theproductname = $product_info->fields['products_name']; 
 		for ($i=0;$i<sizeof($breadcrumb->_trail);$i++) { ?>
@@ -39,7 +39,7 @@
 		};
 		echo $breadcrumb->_trail[$i]['title']; ?></a> >
 	<?php } ?>
-</h2>
+</div>
 
 <form method="post" rel="external" action="/cart/index.php?action=add_product" class="productform">
 	<input type="hidden" name="products_id" value="<?php echo $product_info->fields['products_id']; ?>"/>

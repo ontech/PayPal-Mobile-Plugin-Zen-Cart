@@ -17,8 +17,8 @@
 
 <table cellpadding="4" align="center" id="cart">
 <tr>
-	<th>Qty</th>
-	<th> </th>
+	<th style="border-right:0px !important;">Qty</th>
+	<th style="border-left:0px !important;"> &nbsp;</th>
 	<th>Name</th>
 	<th>Price</th>
 	<th>Delete </th>
@@ -76,8 +76,8 @@
 }
 ?>
 <tr>
-	<td colspan="3" align="right">Total</td>
-	<td><?php echo $cartShowTotal; ?> </td>
+	<td colspan="3" align="right" style="font-weight: bolder;">Total (<?php echo $_SESSION['currency']; ?>)</td>
+	<td style="font-weight: bolder;"><?php echo $cartShowTotal; ?> </td>
 </tr>
 <tr>
 <td colspan="5" style="text-align:center;">
@@ -88,7 +88,8 @@
 
 <div style="text-align:center; padding-top:10px;">
 	<a rel="external" href="http://zencartmobile.ezispace.com/ipn_main_handler.php?type=ec">
-		    <img src="mobile/images/btn_checkout_278x43.png" />
+		    <img id="paypalbutton" src="mobile/images/btn_checkout_278x43.png" />
+		    <img style="display:none;" src="mobile/images/btn_checkout_278x43down.png" />
     </a>
 </div>
 

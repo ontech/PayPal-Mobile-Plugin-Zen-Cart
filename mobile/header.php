@@ -4,9 +4,17 @@
 
     <link rel="search" type="application/opensearchdescription+xml" href="/osd.xml" title="{if MerchantName}{MerchantName} {/if}Site Search"/>
 
+	<script>
+	document.cookie = "fred=fred;";
+	if(!/fred/i.test(document.cookie))
+	{
+		window.location = "/cookies.php";
+	}
+	</script>
+	
 	<script src="mobile/js/jquery-1.6.2.min.js"></script>
 	<script src="mobile/js/jquery.mobile-1.0b3.min.js"></script>
-	<script type="text/javascript" src="mobile/js/ezi-mobile.js"></script>
+	<script type="text/javascript" src="mobile/js/ezi-mobile.js?3"></script>
 
 	<link rel="stylesheet" href="mobile/css/jquery.mobile-1.0b3.min.css" />
 	<link rel="stylesheet" type="text/css" href="mobile/css/style.css" />

@@ -13,7 +13,8 @@
 
 	<div id="PayPalExpressCheckout">
 	<a rel="external" href="/ipn_main_handler.php?type=ec">
-		    <img src="mobile/images/btn_checkout_278x43.png" />
+		    <img id="paypalbutton" src="mobile/images/btn_checkout_278x43.png" />
+		    <img style="display:none;" src="mobile/images/btn_checkout_278x43down.png" />
     </a>
     </div>
 	

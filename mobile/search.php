@@ -1,18 +1,18 @@
 <?php include 'header.php'; ?>
 
-<h2>Search Results</h2>
+<div>Search Results</div>
 
 <form action="/search?main_page=advanced_search_result" method="get" class="searchpopup">
 	<table><tr><td>
-		<input class="suggest ui-input-text ui-body-null" type="text" id="searchinput" data-type="search" name="keyword" placeholder="Search" autocomplete="off" value="<?php echo ($_GET['keyword']); ?>">
+		<input class="suggest ui-input-text ui-body-null" type="text" id="searchinput" data-type="search" name="keyword" placeholder="Search" autocomplete="off" value="<?php echo htmlspecialchars(stripslashes($_GET['keyword'])); ?>">
 	</td><td>
-	<input type="submit" value="Go" style="background:none; border:2px solid #dedede; box-shadow:2px 2px 2px 2px #999;  border-radius:10px;"/>
+	<input type="submit" value="Go" style="background:none; border:2px solid #dedede; box-shadow:2px 2px 2px 2px #999;  border-radius:10px;" data-role="none"/>
 	</td></tr></table>
 </form>
 
 <?php
-
-if ($result->number_of_rows > 0) {
+if($result->number_of_rows > 0)
+{
 
 $resultset = $db->Execute($result->sql_query);
 $listing = $resultset;

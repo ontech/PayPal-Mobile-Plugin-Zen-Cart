@@ -53,9 +53,9 @@ for ($i=0;$i<sizeof($products);$i++) {
 <tfoot>
     <?php //{if !Quote} ?>
     <tr>
-        <td><div style="width: 214px; padding-top: 5px; text-align: left;">Total</div></td>
+        <td><div style="width: 214px; padding-top: 5px; text-align: left;">Total (<?php echo $_SESSION['currency']; ?>)</div></td>
         <td align="left">
-            <div style="width:60px;">$<?php echo $_SESSION['cart']->show_total();?></div>
+            <div style="width:60px;">$<?php echo number_format($_SESSION['cart']->show_total(), 2);?></div>
         </td>
     </tr>
     <?php //{/if} ?>
@@ -66,8 +66,9 @@ for ($i=0;$i<sizeof($products);$i++) {
 <li class="ui-li ui-li-static ui-body-c" style="text-align: center; padding: 0; padding-top: 5px; padding-bottom: 5px;">
 	<div class="ui-footer-fixed">
 
-	<a rel="external" href="http://zencartmobile.ezispace.com/ipn_main_handler.php?type=ec">
-		    <input type="image" width="260" src="mobile/images/btn_checkout_278x43.png"/>
+	<a rel="external" href="/ipn_main_handler.php?type=ec">
+		    <img id="paypalbutton" src="mobile/images/btn_checkout_278x43.png" />
+		    <img style="display:none;" src="mobile/images/btn_checkout_278x43down.png" />
     </a>
 	</div>
 </li>

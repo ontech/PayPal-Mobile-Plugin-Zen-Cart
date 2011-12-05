@@ -2,14 +2,19 @@ var CartItemCount = "...";
 var MiniCart;
 
 $("[data-role=page]").live('pageshow', function(){		
+	
+	
+	$("#paypalbutton").attr("src", "mobile/images/btn_checkout_278x43.png");
+	$("#paypalbutton").live("click", function(){
+		$(this).attr("src", "mobile/images/btn_checkout_278x43down.png");
+	});
 
 	$(".ui-li").removeClass("prodclick");
 
 	$('.productform').submit(function(evt) {
 
-		//var formdata = $(this).serialize();
-		//alert(formdata);
-	
+		$("INPUT[type=submit]:enabled").attr("disabled", "disabled").attr("data-mobile", "disabled");
+
 		if(MiniCart)
 		{
 			$("#cartpanel").children().remove();
@@ -28,7 +33,9 @@ $("[data-role=page]").live('pageshow', function(){
 					currentquantity = 0;
 			},				
 			complete : function() {
-				$.mobile.hidePageLoadingMsg();				
+				$.mobile.hidePageLoadingMsg();
+
+				$("INPUT[data-mobile=disabled]").removeAttr("disabled");
 
 				$.ajax({
 					type: "GET",
@@ -63,7 +70,6 @@ $("[data-role=page]").live('pageshow', function(){
 });
 
 $("[data-role=page]").live("pagebeforehide", function() {
-
 	$("#cat, #searchpanel, #cartpanel").hide();
 	$(document).unbind(".panels");
 });
@@ -191,11 +197,12 @@ $(".gallery-icon-list A").live("click", function(evt) {
 
 });
 
-$(".ui-input-clear").click(function(){
+$(".ui-input-clear").live("click", function(){
 	var Link = $("#search");
 	var Panel = $("#searchpanel");
 	$(document.activeElement).blur();			
-	Panel.one('webkitAnimationEnd', function() { Panel.hide(); });
+	$(document.activeElement).attr("value", "");			
+	Panel.hide();
 	Panel.addClass("slidedownfrommenu in reverse");
 	$(document).unbind(".panels");
 	Link.removeClass("ui-btn-active");							
@@ -234,8 +241,8 @@ $("#search, #categories, .carticon").live("click", function(evt) {
 			Panel.css("top", "0px");			
 			Panel.removeClass("slidedownfrommenu in reverse");
 			
-			if(this.id != "search")			
-				Panel.addClass("slidedownfrommenu in");
+			//if(this.id != "search")			
+			//	Panel.addClass("slidedownfrommenu in");
 	
 			Panel.show();
 			Panel.find("INPUT:visible:first").focus();				
@@ -277,7 +284,7 @@ $("#search, #categories, .carticon").live("click", function(evt) {
 			if(Panel.is(":visible"))
 			{
 				$(document.activeElement).blur();
-				Panel.one('webkitAnimationEnd', function() { Panel.hide(); });
+				/*Panel.one('webkitAnimationEnd', function() {*/ Panel.hide(); /*});*/
 				Panel.addClass("slidedownfrommenu in reverse");
 				$(document).unbind(".panels");
 				Link.removeClass("ui-btn-active");
@@ -289,7 +296,7 @@ $("#search, #categories, .carticon").live("click", function(evt) {
 			if(evt.target == Panel[0])
 			{	
 				$(document.activeElement).blur();			
-				Panel.one('webkitAnimationEnd', function() { Panel.hide(); });
+				/*Panel.one('webkitAnimationEnd', function() {*/ Panel.hide(); /*});*/
 				Panel.addClass("slidedownfrommenu in reverse");
 				$(document).unbind(".panels");
 				Link.removeClass("ui-btn-active");	
