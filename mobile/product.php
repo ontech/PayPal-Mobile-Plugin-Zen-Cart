@@ -41,7 +41,7 @@
 	<?php } ?>
 </div>
 
-<form method="post" rel="external" action="/cart/index.php?action=add_product" class="productform">
+<form method="post" rel="external" action="cart/index.php?action=add_product" class="productform">
 	<input type="hidden" name="products_id" value="<?php echo $product_info->fields['products_id']; ?>"/>
 	<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4">
 	

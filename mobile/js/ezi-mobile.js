@@ -39,7 +39,7 @@ $("[data-role=page]").live('pageshow', function(){
 
 				$.ajax({
 					type: "GET",
-					url: "../minicart.php",
+					url: "minicart.php",
 					data : { "type" : "html" },
 					dataType : "html",
 					cache : true,
@@ -256,7 +256,7 @@ $("#search, #categories, .carticon").live("click", function(evt) {
 				
 				$.ajax({
 					type: "GET",
-					url: "../minicartview.php",
+					url: "minicartview.php",
 					data : { "type" : "html" },
 					dataType : "html",
 					cache : false,

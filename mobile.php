@@ -1,6 +1,6 @@
 <?php
 
-	if($_GET["main_page"] == "login")
+	if(isset($_GET["main_page"]) && $_GET["main_page"] == "login")
 	{
 		unset($_SESSION['paypal_ec_token']);
 		header("HTTP/1.1 303 See Other");
@@ -32,7 +32,13 @@ echo "page url: $pagename";
 <?php
 function matchhome(){
 	global $db, $zco_notifier, $template;
-	$subject = $_SERVER['REQUEST_URI'];
+ 
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
 	$pattern = '/^\/(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -54,7 +60,13 @@ function matchcart(){
 	global $productArray;
 	global $cartShowTotal;
 	global $currency_code;
-	$subject = $_SERVER['REQUEST_URI'];
+  
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);  
+  
 	$pattern = '/index.php\?main_page=shopping_cart/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -66,7 +78,13 @@ matchcart();
 
 function matchcheckoutsuccess(){
 	global $zv_orders_id, $orders_id, $orders, $define_page;
-	$subject = $_SERVER['REQUEST_URI'];
+
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
 	$pattern = '/index.php\?main_page=checkout_success/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -77,7 +95,13 @@ function matchcheckoutsuccess(){
 matchcheckoutsuccess();
 
 function matchminicart(){
-	$subject = $_SERVER['REQUEST_URI'];
+
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
 	$pattern = '/minicart.php/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -88,7 +112,13 @@ function matchminicart(){
 matchminicart();
 
 function matchminicartview(){
-	$subject = $_SERVER['REQUEST_URI'];
+
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
 	$pattern = '/minicartview.php/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -101,7 +131,12 @@ matchminicartview();
 function matchcategory(){
 	global $db, $zco_notifier, $template;
 	
-	$subject = $_SERVER['REQUEST_URI'];
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
 	$pattern = '/^\/category\d+_\d+\.htm(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -119,7 +154,13 @@ if(matchcategory())
 }
 
 function matchcookies() {
-	$subject = $_SERVER['REQUEST_URI'];
+
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
 	$pattern = '/cookies.php/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -132,7 +173,13 @@ matchcookies();
 
 function matchproduct(){
 	global $sql;
-	$subject = $_SERVER['REQUEST_URI'];
+
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
 	$pattern = '/^\/prod\d+\.htm(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -154,7 +201,13 @@ if(matchproduct())
 }
 
 function matchgallery(){
-	$subject = $_SERVER['REQUEST_URI'];
+
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
 	$pattern = '/^\/gallery\d+\.htm(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
@@ -176,7 +229,13 @@ function matchsearch(){
 	global $result;
 	global $db;
 	global $list_box_contents;
-	$subject = $_SERVER['REQUEST_URI'];
+
+  $requestURI = $_SERVER['REQUEST_URI']; 
+ 
+  $catalogFolder = DIR_WS_CATALOG;
+  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
 	$pattern = '/(^\/search\/?(?:$|\?)|^\/index.php\?main_page=advanced_search)/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {

@@ -49,7 +49,7 @@
 	<td><?php echo $product['productsName']; ?> </td>
 	<td><?php echo $product['productsPrice']; ?> </td>
 	<td align="center">
-           <a href="/index.php?main_page=shopping_cart&action=remove_product&product_id=<?php echo $product['id']; ?>"><img src="mobile/images/delete.png" /></a>
+           <a href="index.php?main_page=shopping_cart&action=remove_product&product_id=<?php echo $product['id']; ?>"><img src="mobile/images/delete.png" /></a>
 	</td>
 </tr>
 <tr>
@@ -87,7 +87,7 @@
 </table>
 
 <div style="text-align:center; padding-top:10px;">
-	<a rel="external" href="http://zencartmobile.ezispace.com/ipn_main_handler.php?type=ec">
+	<a rel="external" href="./ipn_main_handler.php?type=ec">
 		    <img id="paypalbutton" src="mobile/images/btn_checkout_278x43.png" />
 		    <img style="display:none;" src="mobile/images/btn_checkout_278x43down.png" />
     </a>
