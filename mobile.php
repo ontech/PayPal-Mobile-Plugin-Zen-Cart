@@ -60,6 +60,7 @@ function matchcart(){
 	global $productArray;
 	global $cartShowTotal;
 	global $currency_code;
+	global $template;
   
   $requestURI = $_SERVER['REQUEST_URI']; 
  
