@@ -11,7 +11,7 @@
 		if($i==0) {
 			echo '/">';
 		} else {
-			echo '/category' . $catid . '_1.htm?cPath='. $catid . '">';
+			echo 'category' . $catid . '_1.htm?cPath='. $catid . '">';
 		};
 		echo $breadcrumb->_trail[$i]['title']; ?></a> >
 	<?php } ?>
