@@ -1,14 +1,16 @@
 <?php
 
+
+
+	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
+	require('includes/application_top.php');
+  
 	if(isset($_GET["main_page"]) && $_GET["main_page"] == "login")
 	{
 		unset($_SESSION['paypal_ec_token']);
 		header("HTTP/1.1 303 See Other");
-		header("Location: http://".$_SERVER[HTTP_HOST]."/".DIR_WS_CATALOG ."/ipn_main_handler.php?type=ec");
-	}
-
-	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
-	require('includes/application_top.php');
+		header("Location: http://".$_SERVER[HTTP_HOST]."/". DIR_WS_CATALOG ."/ipn_main_handler.php?type=ec");
+	}  
   
 	$language_page_directory = DIR_WS_LANGUAGES . $_SESSION['language'] . '/';
 	$directory_array = $template->get_template_part($code_page_directory, '/^header_php/');
