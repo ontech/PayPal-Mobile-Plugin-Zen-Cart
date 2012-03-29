@@ -60,6 +60,7 @@ function matchcart(){
 	global $productArray;
 	global $cartShowTotal;
 	global $currency_code;
+	global $template;
   
   $requestURI = $_SERVER['REQUEST_URI']; 
  
@@ -77,7 +78,7 @@ function matchcart(){
 matchcart();
 
 function matchcheckoutsuccess(){
-	global $zv_orders_id, $orders_id, $orders, $define_page;
+	global $zv_orders_id, $orders_id, $orders, $define_page, $template;
 
   $requestURI = $_SERVER['REQUEST_URI']; 
  
@@ -95,7 +96,7 @@ function matchcheckoutsuccess(){
 matchcheckoutsuccess();
 
 function matchminicart(){
-
+	global $template;
   $requestURI = $_SERVER['REQUEST_URI']; 
  
   $catalogFolder = DIR_WS_CATALOG;
@@ -112,7 +113,7 @@ function matchminicart(){
 matchminicart();
 
 function matchminicartview(){
-
+global $template;
   $requestURI = $_SERVER['REQUEST_URI']; 
  
   $catalogFolder = DIR_WS_CATALOG;
@@ -154,7 +155,7 @@ if(matchcategory())
 }
 
 function matchcookies() {
-
+global $template;
   $requestURI = $_SERVER['REQUEST_URI']; 
  
   $catalogFolder = DIR_WS_CATALOG;
@@ -172,7 +173,7 @@ matchcookies();
 
 
 function matchproduct(){
-	global $sql;
+	global $sql, $template;
 
   $requestURI = $_SERVER['REQUEST_URI']; 
  
@@ -201,7 +202,7 @@ if(matchproduct())
 }
 
 function matchgallery(){
-
+global $template;
   $requestURI = $_SERVER['REQUEST_URI']; 
  
   $catalogFolder = DIR_WS_CATALOG;
@@ -229,7 +230,8 @@ function matchsearch(){
 	global $result;
 	global $db;
 	global $list_box_contents;
-
+	global $template; 
+	
   $requestURI = $_SERVER['REQUEST_URI']; 
  
   $catalogFolder = DIR_WS_CATALOG;
