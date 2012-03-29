@@ -56,12 +56,12 @@ if (!$listing->EOF) {
 </tr>
 <tr>
 <td width="0" style="vertical-align: top;">
-	<a href="/prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="/images/<?php echo $listing->fields['products_image']; ?>" width="100"/></a>
+	<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="./images/<?php echo $listing->fields['products_image']; ?>" width="100"/></a>
 </td>
 <td align="left">
 		<!--div class="unavailable">{include field="UnavailableMessageHTML"}</div-->
 		<!--{if BuyButtonID}-->	
-		<form method="post" action="/cart/index.php?action=add_product" class="productform">
+		<form method="post" action="cart/index.php?action=add_product" class="productform">
 			<input type="hidden" name="products_id" value="<?php echo $listing->fields['products_id']; ?>"/>
 			<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4">
 
