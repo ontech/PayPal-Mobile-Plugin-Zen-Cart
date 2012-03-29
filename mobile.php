@@ -4,7 +4,7 @@
 	{
 		unset($_SESSION['paypal_ec_token']);
 		header("HTTP/1.1 303 See Other");
-		header("Location: http://".$_SERVER[HTTP_HOST]."/ipn_main_handler.php?type=ec");
+		header("Location: http://".$_SERVER[HTTP_HOST]."/".DIR_WS_CATALOG ."/ipn_main_handler.php?type=ec");
 	}
 
 	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
@@ -240,7 +240,7 @@ function matchsearch(){
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
 		$select_column_list = 'pd.products_name, p.products_image, ';
-		//require('includes/index_filters/default_filter.php');
+		require('includes/index_filters/default_filter.php');
 		include 'mobile/search.php';
 		die();
 	}
