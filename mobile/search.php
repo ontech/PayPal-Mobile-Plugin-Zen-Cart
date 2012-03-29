@@ -30,7 +30,7 @@ $listing = $resultset;
 		<table width="100%">
 		<tr>
 			<td colspan="2" align="left">
-				<a href="/prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><?php echo $listing->fields['products_name']; ?></a>
+				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><?php echo $listing->fields['products_name']; ?></a>
 			</td>
 		</tr>
 		<tr>

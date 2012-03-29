@@ -14,7 +14,7 @@ if (($_SESSION['cart']->count_contents()) == 0) {
 ?>
 
 <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-btn ui-bar-b ui-btn-up-undefined ui-corner-top">Shopping Cart
-<div style="float: right;"><a href="/index.php?main_page=shopping_cart" class="buy" rel="external" style="color: #fff;"> Edit...</a></div>
+<div style="float: right;"><a href="index.php?main_page=shopping_cart" class="buy" rel="external" style="color: #fff;"> Edit...</a></div>
 </li>
 
 <li style="text-align:center; padding:5px;" class="ui-li ui-li-static ui-body-c">
@@ -66,7 +66,7 @@ for ($i=0;$i<sizeof($products);$i++) {
 <li class="ui-li ui-li-static ui-body-c" style="text-align: center; padding: 0; padding-top: 5px; padding-bottom: 5px;">
 	<div class="ui-footer-fixed">
 
-	<a rel="external" href="/ipn_main_handler.php?type=ec">
+	<a rel="external" href="ipn_main_handler.php?type=ec">
 		    <img id="paypalbutton" src="mobile/images/btn_checkout_278x43.png" />
 		    <img style="display:none;" src="mobile/images/btn_checkout_278x43down.png" />
     </a>

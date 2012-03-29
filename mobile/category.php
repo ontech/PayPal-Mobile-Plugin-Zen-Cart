@@ -51,7 +51,7 @@ if (!$listing->EOF) {
 <table width="100%">
 <tr>
 	<td colspan="2" align="left">
-		<a rel="external" href="/prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><?php echo $listing->fields['products_name']; ?></a>
+		<a rel="external" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><?php echo $listing->fields['products_name']; ?></a>
 	</td>
 </tr>
 <tr>
@@ -87,7 +87,7 @@ if (!$listing->EOF) {
 			<?php
 			}
 			?>
-				<a href="/prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
 			</td></tr></table>
 		</form>
 		<!--{/if}-->
