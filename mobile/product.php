@@ -69,7 +69,7 @@
 				</span>
 				<br />
 				<span class="price">
-					<?php if(!specials_new_products_price) echo 'now'; ?> $<?php echo number_format($product_info->fields['products_price'] , 2); ?>
+					<?php if(!specials_new_products_price) echo 'now'; ?> <?php echo zen_get_products_display_price($listing->fields['products_id']) ?>
 			</span>
             
             <!--{if DisplayCurrencies}

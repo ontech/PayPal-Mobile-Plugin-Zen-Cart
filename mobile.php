@@ -1,6 +1,8 @@
 <?php
 	ini_set('display_errors', 'off');
 
+
+
 	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
   
@@ -97,7 +99,7 @@ function matchcheckoutsuccess(){
 matchcheckoutsuccess();
 
 function matchminicart(){
-	global $template;
+	global $template, $currencies;
   $requestURI = $_SERVER['REQUEST_URI']; 
  
   $catalogFolder = DIR_WS_CATALOG;
@@ -114,7 +116,7 @@ function matchminicart(){
 matchminicart();
 
 function matchminicartview(){
-global $template;
+global $template, $currencies;
   $requestURI = $_SERVER['REQUEST_URI']; 
  
   $catalogFolder = DIR_WS_CATALOG;

@@ -73,7 +73,7 @@ if (!$listing->EOF) {
 					</span>
 					<br />
 					<span class="price">
-						<?php if(!specials_new_products_price) echo 'now'; ?> $<?php echo number_format($listing->fields['final_price'] , 2); ?>
+						<?php if(!specials_new_products_price) echo 'now'; ?> <?php echo zen_get_products_display_price($listing->fields['products_id']) ?>
 					</span>
 				
 			</td></tr><tr><td style="border:none; vertical-align:middle;">
@@ -110,14 +110,6 @@ echo '<p>There are no products in this category</p>';
 ?>
 
 </ul>
-
-
-<?php
-	//print_r($listing);
-	//echo "<br /><br />";
-	//print_r($subcategories);
-	//print_r($breadcrumb->_trail);
-?>
 
 <?php include 'footer.php'; ?>
 
