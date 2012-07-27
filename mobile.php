@@ -1,6 +1,5 @@
 <?php
-
-
+	ini_set('display_errors', 'off');
 
 	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
