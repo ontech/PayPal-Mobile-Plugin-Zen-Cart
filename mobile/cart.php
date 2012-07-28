@@ -46,7 +46,7 @@
 		}
 	?>
 	</td>
-	<td><?php echo $product['productsName']; ?> </td>
+	<td><?php echo htmlspecialchars($product['productsName']); ?> </td>
 	<td><?php echo $product['productsPrice']; ?> </td>
 	<td align="center">
            <a href="index.php?main_page=shopping_cart&action=remove_product&product_id=<?php echo $product['id']; ?>"><img src="mobile/images/delete.png" /></a>
@@ -62,7 +62,7 @@
 			foreach ($product['attributes'] as $option => $value) {
 		?>
 
-		<li><?php echo $value['products_options_name'] . TEXT_OPTION_DIVIDER . nl2br($value['products_options_values_name']); ?></li>
+		<li><?php echo htmlspecialchars($value['products_options_name']) . TEXT_OPTION_DIVIDER . nl2br(htmlspecialchars($value['products_options_values_name'])); ?></li>
 
 		<?php
 			}
