@@ -30,29 +30,21 @@ $listing = $resultset;
 		<table width="100%">
 		<tr>
 			<td colspan="2" align="left">
-				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><?php echo $listing->fields['products_name']; ?></a>
+				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><?php echo htmlspecialchars($listing->fields['products_name']); ?></a>
 			</td>
 		</tr>
 		<tr>
 		<td width="0" style="vertical-align: top;">
-			<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="images/<?php echo $listing->fields['products_image']; ?>" width="100"/></a>
+			<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="images/<?php echo htmlspecialchars($listing->fields['products_image']); ?>" width="100"/></a>
 		</td>
 		<td align="left">
-				<!--div class="unavailable">{include field="UnavailableMessageHTML"}</div-->
-				<!--{if BuyButtonID}-->	
 				<form method="post" action="cart/index.php?action=add_product" class="productform">
 					<input type="hidden" name="products_id" value="<?php echo $listing->fields['products_id']; ?>"/>
 					<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4">
 
 					<table align="center" style="margin-left:auto; margin-right:auto;" width="100"><tr><td style="border:none; vertical-align:middle">					
-							<span class="listprice">
-								<?php
-								if(specials_new_products_price)
-									echo $listing->fields['was $' . number_format(specials_new_products_price , 2)]; ?>
-							</span>
-							<br />
 							<span class="price">
-								<?php if(!specials_new_products_price) echo 'now'; ?> <?php echo zen_get_products_display_price($listing->fields['products_id']) ?>
+								<?php echo zen_get_products_display_price($listing->fields['products_id']) ?>
 							</span>
 						
 					</td></tr><tr><td style="border:none; vertical-align:middle;">
@@ -62,7 +54,6 @@ $listing = $resultset;
 						<a href="prod<?php echo $listing->fields['products_id']; ?>.htm" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
 					</td></tr></table>
 				</form>
-				<!--{/if}-->
 		</td>
 		</tr>
 		</table>		
@@ -79,17 +70,6 @@ $listing->MoveNext();
 } else {
 	echo '<p>Your search has produced no results</p>';
 };
-
-?>
-
-<?php
-
-
-
-//$_GET['keyword'] = trim($_GET['keyword']);
-//echo $_GET['keyword'];
-//echo '<br /><br />';
-//print_r ($result);
 
 ?>
 

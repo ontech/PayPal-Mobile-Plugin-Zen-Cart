@@ -31,19 +31,18 @@ if (($_SESSION['cart']->count_contents()) == 0) {
 for ($i=0;$i<sizeof($products);$i++) {
 ?>
 
-<!--{if not Offer}-->
 	<li style="text-align:center; padding:5px;" class="ui-li ui-li-static ui-body-c">
 		<div class="ui-btn-text">
 		<table>	
 			<tr>
 				<td><div style="width:30px;"><?php echo $products[$i]['quantity'];?></div></td>
-				<td align="left"><div style="width:180px; padding-top:5px; height:20px; white-space:nowrap; overflow: hidden; text-overflow:ellipsis;"><?php echo $products[$i]['name']; ?></div></td>
+				<td align="left"><div style="width:180px; padding-top:5px; height:20px; white-space:nowrap; overflow: hidden; text-overflow:ellipsis;"><?php echo htmlspecialchars($products[$i]['name']); ?></div></td>
 				<td align="left"><div style="width:60px;"> <?php echo $currencies->display_price($products[$i]['final_price'], 0, $products[$i]['quantity']); ?></div></td>
 			</tr>
 		</table>
 		</div>
 	</li>	
-<!--{/if}-->
+
 <?php
 }
 ?>
@@ -51,14 +50,12 @@ for ($i=0;$i<sizeof($products);$i++) {
 <li style="text-align:center; padding:5px;" class="ui-li ui-li-static ui-body-c">
 <table>
 <tfoot>
-    <?php //{if !Quote} ?>
     <tr>
         <td><div style="width: 214px; padding-top: 5px; text-align: left;">Total (<?php echo $_SESSION['currency']; ?>)</div></td>
         <td align="left">
-            <div style="width:60px;"><?php echo $currencies->display_price($_SESSION['cart']->show_total());?></div>
+            <div style="width:60px;"><?php echo $currencies->format($_SESSION['cart']->show_total());?></div>
         </td>
     </tr>
-    <?php //{/if} ?>
 </tfoot>
 </table>
 </li>

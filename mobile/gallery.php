@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo $listing->fields['products_name']; ?> Gallery</title>
+<title><?php echo htmlspecialchars($listing->fields['products_name']); ?> Gallery</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<script src="mobile/js/jquery-1.6.2.min.js"></script>
@@ -49,24 +49,10 @@
 	<div style="height:350px;">
 		<div style="position: relative;">
 			<img style="display: none; z-index: 1; position: absolute;" id="loading" src="mobile/images/ajax-loader.gif" />
-			<img id="hero" src="mobile/images/<?php echo $product_info->fields['products_image']; ?>" width="100%" style="max-height:350px; max-width:370px; display:block; margin-left:auto; margin-right:auto;" />
+			<img id="hero" src="mobile/images/<?php echo htmlspecialchars($product_info->fields['products_image']); ?>" width="100%" style="max-height:350px; max-width:370px; display:block; margin-left:auto; margin-right:auto;" />
 		</div>
 	</div>
 	</div>
-
-	<div data-role="footer" data-position="fixed" data-theme="a">
-	<ul class="gallery-icon-list" style="overflow: auto; clear: both;">
-		<li><a rel="external" href="productimage_{ID}.jpg?width=470"><img src="productimage_{ID}.jpg?width=64&height=64" /></a></li>
-	</ul>
-	</div>
-	
-
-<div style="display: none;">
-<img id="galleryimg0" src="{src}?width=470"/>
-{for gallery}
-<img id="galleryimg{position}" src="{src}?width=470"/>
-{/for}
-</div>
 
 </div>
 
