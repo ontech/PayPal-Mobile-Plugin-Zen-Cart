@@ -22,22 +22,20 @@
 <div>
 	<?php
 		$theproductname = $product_info->fields['products_name']; 
-		for ($i=0;$i<sizeof($breadcrumb->_trail);$i++) { ?>
-	<?php 
-		$str = end(explode('_', $breadcrumb->_trail[$i]['link']));	
-		$catid = preg_replace('[\D]', '', $str);
-		$trailname = $breadcrumb->_trail[$i]['title'];
-	?>
-		<a href="
-		<?php 
-		if($i==0) {
-			echo '/">';
-		} else if($trailname == $theproductname) {
-			echo '#">';
-		} else {
-			echo 'category' . $catid . '_1.htm?cPath='. $catid . '">';
-		};
-		echo htmlspecialchars($breadcrumb->_trail[$i]['title']); ?></a> >
+		for ($i=0;$i<sizeof($breadcrumb->_trail);$i++) {
+			$str = end(explode('_', $breadcrumb->_trail[$i]['link']));	
+			$catid = preg_replace('[\D]', '', $str);
+			$trailname = $breadcrumb->_trail[$i]['title'];
+		?>
+			<a href="<?php 
+			if($i==0) {
+				echo '/">';
+			} else if($trailname == $theproductname) {
+				echo '#">';
+			} else {
+				echo 'category' . $catid . '_1.htm?cPath='. $catid . '">';
+			};
+			echo htmlspecialchars($breadcrumb->_trail[$i]['title']); ?></a> >
 	<?php } ?>
 </div>
 
