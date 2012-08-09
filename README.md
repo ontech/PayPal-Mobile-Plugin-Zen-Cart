@@ -20,6 +20,7 @@ PayPal Mobile Plugin Installation Instructions
 4. Make a backup your current .htaccess file inside your public hosting directory - if you have one.
 
 5. Merge mobile.htaccess file with your existing .htaccess file (if you already have one). This contains the mobile user agent detection.
+   Note: If you do not have an existing .htaccess file, then rename the mobile.htaccess to .htaccess
 
 6. Check the site is still functional on your desktop computer.
 
