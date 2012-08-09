@@ -1,9 +1,14 @@
 RewriteEngine on
+
+# rename this file to .htaccess, or add the following section to your existing .htaccess (At the top, but below RewriteEngine On and RewriteBase:
+# also: do not include "RewriteEngine On" twice in the file.
+
+# ezimerchant mobile redirect
 RewriteCond %{REQUEST_URI}      !/mobile
 RewriteCond %{REQUEST_URI}      !/includes
 RewriteCond %{REQUEST_URI}      !/images
 RewriteCond %{REQUEST_URI} 		!/ipn_main_handler.php
-RewriteCond %{HTTP_USER_AGENT} iPad|iPod|iPhone|Android|s+Mobile 
+RewriteCond %{HTTP_USER_AGENT} iPad|iPod|iPhone|Android|\s+Mobile 
 RewriteCond %{HTTP_USER_AGENT} !iPad 
 RewriteRule .* mobile.php [L] 
 # izemerchant 
