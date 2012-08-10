@@ -24,7 +24,7 @@ $("[data-role=page]").live('pageshow', function(){
 		$.mobile.showPageLoadingMsg();
 		$.ajax({
 			url : "index.php?action=add_product&",
-			dataType : "json",
+//			dataType : "json",
 			type: "POST",
 			data : $(this).serialize(),
 			success : function(result) {

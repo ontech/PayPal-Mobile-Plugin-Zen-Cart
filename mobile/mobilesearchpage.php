@@ -3,6 +3,7 @@
 	<div data-role="content" class="ui-content">	
 		
 		<form action="search?main_page=advanced_search_result" method="get" class="searchpopup">
+                        <input type="hidden" name="securityToken" value="<?php echo @$_SESSION['securityToken'];?>" />
 			<table><tr><td>
 			<div class="ui-input-search ui-shadow-inset ui-btn-corner-all ui-btn-shadow ui-icon-searchfield" style="width: inherit;">
 				<input class="suggest ui-input-text ui-body-null" type="text" id="searchinput" data-type="search" name="keyword" placeholder="Search" autocomplete="off" value="">

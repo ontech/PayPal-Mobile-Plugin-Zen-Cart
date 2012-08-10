@@ -61,6 +61,7 @@ if (!$listing->EOF) {
 <td align="left">
 
 		<form method="post" action="cart/index.php?action=add_product" class="productform">
+                        <input type="hidden" name="securityToken" value="<?php echo @$_SESSION['securityToken'];?>" />
 			<input type="hidden" name="products_id" value="<?php echo $listing->fields['products_id']; ?>"/>
 			<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4">
 
