@@ -56,7 +56,7 @@ if (!$listing->EOF) {
 </tr>
 <tr>
 <td width="0" style="vertical-align: top;">
-	<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="./images/<?php echo htmlspecialchars($listing->fields['products_image']); ?>" width="100"/></a>
+	<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="<?php echo htmlspecialchars(mobile_image(DIR_WS_IMAGES.$listing->fields['products_image'])); ?>" width="100"/></a>
 </td>
 <td align="left">
 
