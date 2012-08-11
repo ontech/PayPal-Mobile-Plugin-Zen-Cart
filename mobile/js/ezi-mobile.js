@@ -225,7 +225,12 @@ $("#search, #categories, .carticon").live("click", function(evt) {
 		var Content = $("[data-role=page] [data-role=content]");
 		var ContentHeight = Content.innerHeight();
 
-		var OtherPanels = $("#cat, #searchpanel, #cartpanel".replace("#" + Panel.attr("id"), "").replace(/^\s+|\s+$/g, "")).filter(":visible");		
+		var OtherPanels = $(
+				["cat", "searchpanel", "cartpanel"]
+					.filter(function(panel) { return panel != Panel.attr("id"); })
+					.map(function(panel) { return "#" + panel; } )
+					.join(", ")
+			).filter(":visible");		
 		if(OtherPanels.length > 0)
 		{
 			OtherPanels.hide();
@@ -241,8 +246,8 @@ $("#search, #categories, .carticon").live("click", function(evt) {
 			Panel.css("top", "0px");			
 			Panel.removeClass("slidedownfrommenu in reverse");
 			
-			//if(this.id != "search")			
-			//	Panel.addClass("slidedownfrommenu in");
+			if(this.id != "search")			
+				Panel.addClass("slidedownfrommenu in");
 	
 			Panel.show();
 			Panel.find("INPUT:visible:first").focus();				

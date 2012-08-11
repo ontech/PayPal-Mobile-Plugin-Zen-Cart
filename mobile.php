@@ -142,6 +142,7 @@ function matchcategory(){
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
 	$pattern = '/^\/category\d+_\d+\.htm(?:$|\?)/';
+
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
 		return true;

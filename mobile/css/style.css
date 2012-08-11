@@ -37,7 +37,7 @@
 .slidedownfrommenu.in {
 	-webkit-transform-origin: top left;
 	-webkit-animation-name: slideinfrommenu;
-	-webkit-animation-duration: 0s;
+	-webkit-animation-duration: 0.2s;
 }
 
 .optionName {
@@ -49,7 +49,7 @@
 	-webkit-transform: translateY(-700px);
 	-webkit-transform-origin: top left;
 	-webkit-animation-name: slideouttomenu;
-	-webkit-animation-duration: 0s;
+	-webkit-animation-duration: 0.3s;
 }		
 
 @-webkit-keyframes slideinfrommenu {
@@ -233,6 +233,11 @@ h1.fn {
 .normalprice
 {
 	text-decoration: line-through;
+}
+
+.productform .ui-submit
+{
+	margin-left: -3px;
 }
 
 /*

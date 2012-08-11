@@ -10,3 +10,5 @@
  */
   require($define_page);
 ?>
+
+<?php include 'returntodesktop.php' ?>

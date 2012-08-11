@@ -1,7 +1,7 @@
 
-</div><!-- /content -->
+	</div><!-- /content -->
 
-	</div><!-- /page -->
+</div><!-- /page -->
 
 
 <?php include 'mobilecategorypage.php'; ?>
