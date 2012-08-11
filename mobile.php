@@ -140,8 +140,8 @@ function matchcategory(){
   $catalogFolder = DIR_WS_CATALOG;
   $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
   $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-  
-	$pattern = '/^\/category\d+_\d+\.htm(?:$|\?)/';
+
+	$pattern = '/^\/category\d+(?:_\d+)*\.htm(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
 		return true;

@@ -61,7 +61,7 @@ for ($i=0;$i<sizeof($products);$i++) {
 </li>
 
 <li class="ui-li ui-li-static ui-body-c" style="text-align: center; padding: 0; padding-top: 5px; padding-bottom: 5px;">
-	<div class="ui-footer-fixed">
+	<div >
 
 	<a rel="external" href="ipn_main_handler.php?type=ec">
 		    <img id="paypalbutton" src="mobile/images/btn_checkout_278x43.png" />

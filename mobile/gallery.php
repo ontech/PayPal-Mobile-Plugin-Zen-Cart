@@ -49,11 +49,12 @@
 	<div style="height:350px;">
 		<div style="position: relative;">
 			<img style="display: none; z-index: 1; position: absolute;" id="loading" src="mobile/images/ajax-loader.gif" />
-			<img id="hero" src="mobile/images/<?php echo htmlspecialchars($product_info->fields['products_image']); ?>" width="100%" style="max-height:350px; max-width:370px; display:block; margin-left:auto; margin-right:auto;" />
+			<img id="hero" src="<?php echo htmlspecialchars(mobile_image(DIR_WS_IMAGES.$product_info->fields['products_image'])); ?>" width="100%" style="max-height:350px; max-width:370px; display:block; margin-left:auto; margin-right:auto;" />
 		</div>
 	</div>
 	</div>
 
 </div>
+
 
 <?php include 'footer.php'; ?>

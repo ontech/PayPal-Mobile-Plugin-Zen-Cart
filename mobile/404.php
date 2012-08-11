@@ -4,4 +4,6 @@
 
 <p>Sorry, the page you visited doesn't exist</p>
 
+<?php include 'returntodesktop.php' ?>
+
 <?php include 'footer.php'; ?>

@@ -50,6 +50,8 @@ find a preference in your phone's browser to re-enable them again if you wish to
 
 You can <a href="./">click here</a> once you have enabled them again to start shopping.
 
+<?php include 'returntodesktop.php' ?>
+
 <?php include 'footer.php' ?>
 
 

@@ -6,10 +6,9 @@
 	$str = end(explode('_', $breadcrumb->_trail[$i]['link']));	
 	$catid = preg_replace('[\D]', '', $str);
 	?>
-	<a href="
-		<?php 
+	<a href="<?php 
 		if($i==0) {
-			echo '/">';
+			echo './">';
 		} else {
 			echo 'category' . $catid . '_1.htm?cPath='. $catid . '">';
 		};
@@ -24,7 +23,7 @@ $subcategories = zen_get_categories('', $current_category_id);
 
 <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
 	<?php   for ($i=0;$i<sizeof($subcategories);$i++) { ?>
-		<li class="ui-li ui-li-static ui-body-c"><a href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo htmlspecialchars($subcategories[$i]['text']); ?></a></li>
+		<li data-theme="c" class=""><a data-transition="slide" href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo $subcategories[$i]['text']; ?></a></li>
 	<?php } ?>
 </ul>
 
@@ -44,7 +43,7 @@ if (!$listing->EOF) {
 	{
 	?>
 		
-	<li style="text-align:center; padding:5px;">
+	<li style="text-align:center; padding:5px;" class="ui-body-c">
 	
 <div class="hproduct brief" style="text-align:center;">
 
@@ -104,6 +103,9 @@ echo '<p>There are no products in this category</p>';
 ?>
 
 </ul>
+
+<?php include 'returntodesktop.php' ?>
+
 
 <?php include 'footer.php'; ?>
 

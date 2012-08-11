@@ -15,7 +15,7 @@
 
 ?>
 
-<table cellpadding="4" align="center" id="cart">
+<table cellpadding="4" style="width: 100%;" id="cart">
 <tr>
 	<th style="border-right:0px !important;">Qty</th>
 	<th style="border-left:0px !important;"> &nbsp;</th>
@@ -98,5 +98,7 @@
 ?>
 
 </form>
+
+<?php include 'returntodesktop.php' ?>
 
 <?php include 'footer.php'; ?>
