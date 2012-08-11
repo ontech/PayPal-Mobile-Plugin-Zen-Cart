@@ -53,7 +53,7 @@
 			<div style="z-index: 2; background-color: #fff; position: absolute; top: -1px; left: -2px; width: 124px; height: 125px; box-shadow: 1px 1px #888; border: 1px solid #ddd; -webkit-transform: rotate(1deg);"></div>
 			<div style="z-index: 3; background-color: #fff; position: absolute; top: 0px; left: -2px; width: 124px; height: 125px; box-shadow: 1px 1px #666; border: 1px solid #ddd; -webkit-transform: rotate(1.5deg);"></div>
 
-			<a href="gallery<?php echo $product_info->fields['products_id']; ?>.htm?products_id=<?php echo $product_info->fields['products_id']; ?>" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; display: block; z-index: 4; line-height: 124px; text-align: center;"><img class="photo" style="vertical-align: middle;" src="images/<?php echo htmlspecialchars($product_info->fields['products_image']); ?>" width="100"/></a>
+			<a href="gallery<?php echo $product_info->fields['products_id']; ?>.htm?products_id=<?php echo $product_info->fields['products_id']; ?>" style="position: absolute; top: 0px; left: 0px; display: block; z-index: 4;"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="<?php echo htmlspecialchars(mobile_image(DIR_WS_IMAGES.$product_info->fields['products_image'])); ?>" width="100"/></a>
 		</div>
 	</td>
 	<td  align="left" valign="top" style="padding-left: 8px;">
