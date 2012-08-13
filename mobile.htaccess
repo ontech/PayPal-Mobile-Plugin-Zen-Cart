@@ -4,7 +4,7 @@ RewriteEngine on
 # also: do not include "RewriteEngine On" twice in the file.
 
 # ezimerchant mobile redirect
-RewriteCond %{HTTP_COOKIE} 		!^.*showdesktop=1.*$\n
+RewriteCond %{HTTP_COOKIE} 		!^.*showdesktop=1.*$ [NC]
 RewriteCond %{REQUEST_URI}      !/mobile
 RewriteCond %{REQUEST_URI}      !/includes
 RewriteCond %{REQUEST_URI}      !/images
