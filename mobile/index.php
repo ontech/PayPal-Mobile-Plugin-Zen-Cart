@@ -55,6 +55,7 @@ if ($productcheck) {
 				?>
 
 				<a data-transition="slide" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id'];?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+				<a data-transition="slide" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id'];?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;"><?PHP echo MORE_INFO_TEXT; ?></a>
 			</td></tr></table>
 		</form>
 </td>
