@@ -26,6 +26,15 @@ PayPal Mobile Plugin Installation Instructions
 
 7. Check the site on your phone and test the transaction flow.
 
+Install Option to Return to Mobile version of Website from ZenCart:
+-------------------------------------------------------------------
+
+1. Navigate through the three branches of the includes folder.
+2. Rename the folder YOUR_TEMPLATE to the name of your active ZenCart Template. (Three places in the file structure.)
+3. Copy the includes folder to the base directory similar to the mobile directory.
+4. Removal would require removing the three files.
+
+
 Revert Installation Instructions
 --------------------------------
 
