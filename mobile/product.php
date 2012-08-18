@@ -63,7 +63,7 @@
 		<tr><td style="border:none; vertical-align:middle; text-align:left;">
 		<span style="font-size:15px;">
 			<span class="price">
-				<?php echo zen_get_products_display_price($listing->fields['products_id']) ?>
+				<?php echo zen_get_products_display_price($product_info->fields['products_id']) ?>
 			</span>
         </span>
         <br />
