@@ -41,8 +41,40 @@
 
 <form method="post" rel="external" action="cart/index.php?action=add_product" class="productform">
 	<input type="hidden" name="securityToken" value="<?php echo @$_SESSION['securityToken'];?>" />
-	<input type="hidden" name="products_id" value="<?php echo $product_info->fields['products_id']; ?>"/>
-	<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4">
+<!-- 	<input type="hidden" name="products_id" value="<?php echo $product_info->fields['products_id']; ?>"/>
+	<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4">*/ -->
+
+
+<!--bof Add to Cart Box -->
+<?php
+if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
+  // do nothing
+} else {
+?>
+            <?php
+	$flag_show_product_info_in_cart_qty = zen_get_show_product_switch($product_info->fields['products_id'], 'in_cart_qty');
+    $display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($product_info->fields['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($product_info->fields['products_id']) . '</p>' : '');
+
+			$products_qty_box_status = $product_info->fields['products_qty_box_status'];
+			$products_quantity_order_max = $product_info->fields['products_quantity_order_max'];
+            if ($products_qty_box_status == 0 or $products_quantity_order_max== 1) {
+              // hide the quantity box and default to 1
+              $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', $product_info->fields['products_id']);
+            } else {
+              // show the quantity box
+    $the_button = '<input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($product_info->fields['products_id'])) . '" maxlength="6" size="4" /><br />' . zen_draw_hidden_field('products_id', $product_info->fields['products_id']); // . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
+            }
+    $display_button = zen_get_buy_now_button($product_info->fields['products_id'], $the_button);
+  ?>
+  <?php if ($display_qty != '') { ?>
+    <?php
+      echo $display_qty;
+      //echo $display_button;
+            ?>
+  <?php } // display qty and button ?>
+<?php } // CUSTOMERS_APPROVAL == 3 ?>
+<!--eof Add to Cart Box-->
+
 	
 	<div style="border-radius:10px; border:1px solid #999; background:#fff; margin-top:4px; padding:5px;">
     <table style="margin-top:10px;">
@@ -66,8 +98,15 @@
 				<?php echo zen_get_products_display_price($listing->fields['products_id']) ?>
 			</span>
         </span>
-        <br />
-		<input type="submit" data-theme="e" value="Add to Cart" />
+        <br /><?PHP 
+				if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
+				  // do nothing
+				} else {
+					if ($display_button != '') {
+					echo $display_button;
+					?><input type="submit" data-theme="e" value="Add to Cart" /><br/><?PHP
+					}
+				} ?>
 		</td></tr>
 		</table>
 		
