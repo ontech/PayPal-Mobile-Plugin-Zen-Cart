@@ -3,7 +3,8 @@
 
 	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
-  
+        $_SESSION['paypal_ec_markflow'] = 1;
+        
 	if(isset($_GET["main_page"]) && $_GET["main_page"] == "login")
 	{
 		unset($_SESSION['paypal_ec_token']);
