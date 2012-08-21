@@ -23,7 +23,7 @@ $subcategories = zen_get_categories('', $current_category_id);
 
 <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
 	<?php   for ($i=0;$i<sizeof($subcategories);$i++) { ?>
-		<li data-theme="c" class=""><a data-transition="slide" href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo $subcategories[$i]['text']; ?></a></li>
+		<li data-theme="c" class=""><a data-transition="slide" href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo htmlspecialchars($subcategories[$i]['text']); ?></a></li>
 	<?php } ?>
 </ul>
 
@@ -115,7 +115,7 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 				} 
 			}
 			?>
-				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;"><?PHP echo MORE_INFO_TEXT; ?></a>
 			</td></tr></table>
 		</form>
 
