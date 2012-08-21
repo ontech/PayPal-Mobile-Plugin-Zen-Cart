@@ -78,11 +78,12 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 			if (zen_has_product_attributes($listing->fields['products_id'])) { 
 				echo ' ';
 			} else {
-			?><?PHP 
+			?><?php 
 				if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
 				  // do nothing
 				} else {
-				<a data-transition="slide" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id'];?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+				?>
+<a data-transition="slide" href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id'];?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
 					if ($display_button !='') {
 					echo $display_button;
 					?><input type="submit" class="buy" data-theme="e" value="Add to Cart" /><br/><?PHP
