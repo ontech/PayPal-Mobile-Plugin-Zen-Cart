@@ -3,7 +3,8 @@
 
 	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
-  
+	$_SESSION['paypal_ec_markflow'] = 1;  
+	
 	if(isset($_GET["main_page"]) && $_GET["main_page"] == "login")
 	{
 		unset($_SESSION['paypal_ec_token']);
@@ -21,7 +22,7 @@
  */
 		require($code_page_directory . '/' . $value);
     }
-  
+
 /* Debugging
 $device = $_SERVER['template'];
 echo "this device is a $device";
@@ -35,14 +36,25 @@ function matchhome(){
 	global $db, $zco_notifier, $template;
  
 	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$catalogFolder = DIR_WS_CATALOG;
+//	echo $requestURI . "<BR/>";
+
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	echo $catalogFolder . "<BR/>";
+
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+//echo $subject . "<BR/>";
   
 	$pattern = '/^\/(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
+//	echo $matches . "<BR/>";
 	if ($matches) {
+//		echo "matches<BR/>";
 		return true;
 	}
 	
@@ -52,7 +64,8 @@ function matchhome(){
 if(matchhome())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	include 'mobile/index.php';
 	die();
 }
@@ -65,7 +78,13 @@ function matchcart(){
   
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);  
   
@@ -78,12 +97,42 @@ function matchcart(){
 }
 matchcart();
 
+function matchcheckoutprocess(){
+	global $zv_orders_id, $orders_id, $orders, $define_page, $template;
+
+	$requestURI = $_SERVER['REQUEST_URI']; 
+	
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
+	$pattern = '/index.php\?main_page=checkout_process/';
+	preg_match($pattern, $subject, $matches);
+	if ($matches) {
+		include 'mobile/checkoutprocess.php';
+		die();
+	}
+}
+matchcheckoutprocess();	
+
 function matchcheckoutsuccess(){
 	global $zv_orders_id, $orders_id, $orders, $define_page, $template;
 
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
@@ -101,7 +150,13 @@ function matchminicart(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -119,7 +174,13 @@ function matchminicartview(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
@@ -137,7 +198,14 @@ function matchcategory(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -153,7 +221,8 @@ function matchcategory(){
 if(matchcategory())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	include 'mobile/category.php';
 	die();
 }
@@ -163,7 +232,14 @@ function matchcookies() {
 
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -182,7 +258,13 @@ function matchproduct(){
 
   $requestURI = $_SERVER['REQUEST_URI']; 
  
-  $catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//  $catalogFolder = DIR_WS_CATALOG;
   $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
   $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
@@ -197,11 +279,13 @@ function matchproduct(){
 if(matchproduct())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	define('TEXT_PRODUCT_OPTIONS', 'Please Choose: ');
 	define('ATTRIBUTES_PRICE_DELIMITER_PREFIX', ' (');
 	define('ATTRIBUTES_PRICE_DELIMITER_SUFFIX', ') ');
-	require('includes/modules/attributes.php');
+	require(DIR_WS_MODULES . zen_get_module_directory(FILENAME_ATTRIBUTES));
+//	require('includes/modules/attributes.php');
 	include 'mobile/product.php';
 	die();
 }
@@ -210,7 +294,14 @@ function matchgallery(){
 	global $template;
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -226,7 +317,8 @@ function matchgallery(){
 if(matchgallery())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	include 'mobile/gallery.php';
 	die();
 }
@@ -239,7 +331,13 @@ function matchsearch(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
@@ -247,7 +345,8 @@ function matchsearch(){
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
 		$select_column_list = 'pd.products_name, p.products_image, ';
-		require('includes/index_filters/default_filter.php');
+		require(zen_get_index_filters_directory('default_filter.php'));
+//		require('includes/index_filters/default_filter.php');
 		include 'mobile/search.php';
 		die();
 	}
@@ -269,4 +368,57 @@ function mobile_image($src)
  
     return $src;
 }
+
+function matchtimeout(){
+	global $db, $zco_notifier, $template;
+ 
+	$requestURI = $_SERVER['REQUEST_URI']; 
+
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
+	$pattern = '/index.php\?main_page=time_out/';
+	preg_match($pattern, $subject, $matches);
+	
+	if ($matches) {
+		include 'mobile/timeout.php';
+		die();
+	}
+
+}
+matchtimeout();
+
+function matchlogin(){
+	global $db, $zco_notifier, $template;
+ 
+	$requestURI = $_SERVER['REQUEST_URI']; 
+
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
+	$pattern = '/index.php\?main_page=time_out/';
+	preg_match($pattern, $subject, $matches);
+	
+	if ($matches) {
+		include 'mobile/login.php';
+		die();
+	}
+
+}
+matchlogin();
+
 ?>
