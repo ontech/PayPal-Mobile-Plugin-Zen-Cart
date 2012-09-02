@@ -70,12 +70,8 @@ if(matchhome())
 	die();
 }
 
-function matchcart(){
-	global $productArray;
-	global $cartShowTotal;
-	global $currency_code;
-	global $template;
-  
+function mobilematchthis($mainassign)
+{
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
 	$Secure = $_SERVER['HTTPS'];
@@ -84,192 +80,64 @@ function matchcart(){
 	} else {
 		$catalogFolder = DIR_WS_CATALOG;
 	}
-//	$catalogFolder = DIR_WS_CATALOG;
+
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);  
   
-	$pattern = '/index.php\?main_page=shopping_cart/';
+	$pattern = '/index.php\?main_page=' . $mainassign . '/';
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
-		include 'mobile/shopping_cart.php';
-		die();
+		return true;
+	} else {
+		return false;
 	}
 }
-matchcart();
+
+if (mobilematchthis('shopping_cart')) {
+	include 'mobile/shopping_cart.php';
+	die();
+}
 
 //Below added to address shipping if shipping is required for item/cart.
-function matchcheckoutshipping(){ 
-//	global $orders, $define_page, $template, $messageStack, $class, $free_shipping, $quotes, $currencies, $zco_notifier, $db, $current_page_base, $code_page_directory, $editShippingButtonLink, $uri;
-	global $template, $define_page, $current_page_base, $messageStack, $displayAddressEdit, $editShippingButtonLink, $quotes, $free_shipping, $currencies, $zco_notifier, $db, $attributes, $uri;
-
-	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$Secure = $_SERVER['HTTPS'];
-	if ($Secure) {
-		$catalogFolder = DIR_WS_HTTPS_CATALOG;
-	} else {
-		$catalogFolder = DIR_WS_CATALOG;
-	}
-	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-
-	$pattern = '/index.php\?main_page=checkout_shipping/';
-	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-			include 'mobile/checkout_shipping.php';
-			die();
-	} 
+if (mobilematchthis('checkout_shipping')) {
+	include 'mobile/checkout_shipping.php';
+	die();
 }
-matchcheckoutshipping();	
 
 //Below added as next action from Shipping.
-function matchcheckoutpayment(){
-	global $orders, $define_page, $template, $messageStack, $class, $free_shipping, $quotes, $currencies, $zco_notifier, $db, $current_page_base, $code_page_directory, $editShippingButtonLink, $payment_modules, $order_total_modules, $zco_notifier;
-
-	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$Secure = $_SERVER['HTTPS'];
-	if ($Secure) {
-		$catalogFolder = DIR_WS_HTTPS_CATALOG;
-	} else {
-		$catalogFolder = DIR_WS_CATALOG;
-	}
-	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-
-	$pattern = '/index.php\?main_page=checkout_payment/';
-	preg_match($pattern, $subject, $matches);
-	if ($matches && $_POST['action'] != 'submit') {
-		include 'mobile/checkout_payment.php';
-		die();
-	}
+if (mobilematchthis('checkout_payment')) {
+	include 'mobile/checkout_payment.php';
+	die();
 }
-matchcheckoutpayment();	
 
 // Below added as next function from Payment
-function matchcheckoutconfirmation(){
-//	global $orders, $define_page, $template, $messageStack, $class, $free_shipping, $quotes, $currencies, $zco_notifier, $db, $current_page_base, $code_page_directory, $editShippingButtonLink, $payment_modules, $order_total_modules;
-	global $template, $zco_notifier, $define_page, $current_page_base, $messageStack, $flagDisablePaymentAddressChange, $order, $payment_modules, $editShippingButtonLink, $flagAnyOutOfStock, $stock_check, $currencies, $order_total_modules, $form_action_url;
-	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$Secure = $_SERVER['HTTPS'];
-	if ($Secure) {
-		$catalogFolder = DIR_WS_HTTPS_CATALOG;
-	} else {
-		$catalogFolder = DIR_WS_CATALOG;
-	}
-	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-
-	$pattern = '/index.php\?main_page=checkout_confirmation/';
-	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		include 'mobile/checkout_confirmation.php';
-		die();
-	}
+if (mobilematchthis('checkout_confirmation')) {
+	include 'mobile/checkout_confirmation.php';
+	die();
 }
-matchcheckoutconfirmation();	
 
 //Called after confirmation
-function matchcheckoutprocess(){
-	global $define_page, $zv_orders_id, $orders_id, $orders, $template;
-
-	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$Secure = $_SERVER['HTTPS'];
-	if ($Secure) {
-		$catalogFolder = DIR_WS_HTTPS_CATALOG;
-	} else {
-		$catalogFolder = DIR_WS_CATALOG;
-	}
-//	$catalogFolder = DIR_WS_CATALOG;
-	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-
-	$pattern = '/index.php\?main_page=checkout_process/';
-	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		include 'mobile/checkout_process.php';
-		die();
-	}
+if (mobilematchthis('checkout_process')) {
+	include 'mobile/checkout_process.php';
+	die();
 }
-matchcheckoutprocess();	
 
 // Code that is run if mode is set as IPN (I.e., $_SESSION['paypal_ec_markflow'] = 1) and
 //	when done with shipping.
-function matchcheckoutsuccess(){
-	global $zv_orders_id, $orders_id, $orders, $define_page, $template, $code_page_directory;
-
-	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$Secure = $_SERVER['HTTPS'];
-	if ($Secure) {
-		$catalogFolder = DIR_WS_HTTPS_CATALOG;
-	} else {
-		$catalogFolder = DIR_WS_CATALOG;
-	}
-//	$catalogFolder = DIR_WS_CATALOG;
-	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-
-	$pattern = '/index.php\?main_page=checkout_success/';
-	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		include 'mobile/checkout_success.php';
-		die();
-	}
+if (mobilematchthis('checkout_success')) {
+	include 'mobile/checkout_success.php';
+	die();
 }
-matchcheckoutsuccess();
 
-function matchcheckoutshippingaddress(){
-//	global $zv_orders_id, $orders_id, $orders, $define_page, $template, $code_page_directory;
-	global $messageStack, $process, $error, $addresses_count, $template, $current_page_base, $flag_show_pulldown_states, $selected_country, $zone_id, $state_field_label, $zone_name, $state_field_label, $db;
-
-	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$Secure = $_SERVER['HTTPS'];
-	if ($Secure) {
-		$catalogFolder = DIR_WS_HTTPS_CATALOG;
-	} else {
-		$catalogFolder = DIR_WS_CATALOG;
-	}
-//	$catalogFolder = DIR_WS_CATALOG;
-	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-
-	$pattern = '/index.php\?main_page=checkout_shipping_address/';
-	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		include 'mobile/checkout_shipping_address.php';
-		die();
-	}
+if (mobilematchthis('checkout_shipping_address')) {
+	include 'mobile/checkout_shipping_address.php';
+	die();
 }
-matchcheckoutshippingaddress();
 
-function matchcheckoutpaymentaddress(){
-//	global $zv_orders_id, $orders_id, $orders, $define_page, $template, $code_page_directory;
-	global $messageStack, $addresses_count, $current_page_base, $template, $process, $flag_show_pulldown_states, $selected_country, $zone_id, $state_field_label, $zone_name, $state_field_label, $db;
-
-	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$Secure = $_SERVER['HTTPS'];
-	if ($Secure) {
-		$catalogFolder = DIR_WS_HTTPS_CATALOG;
-	} else {
-		$catalogFolder = DIR_WS_CATALOG;
-	}
-//	$catalogFolder = DIR_WS_CATALOG;
-	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
-
-	$pattern = '/index.php\?main_page=checkout_payment_address/';
-	preg_match($pattern, $subject, $matches);
-	if ($matches) {
-		include 'mobile/checkout_payment_address.php';
-		die();
-	}
+if (mobilematchthis('checkout_payment_address')) {
+	include 'mobile/checkout_payment_address.php';
+	die();
 }
-matchcheckoutpaymentaddress();
 
 function matchminicart(){
 	global $template, $currencies;
@@ -382,7 +250,7 @@ matchcookies();
 function matchproduct(){
 	global $sql, $template;
 
-  $requestURI = $_SERVER['REQUEST_URI']; 
+	$requestURI = $_SERVER['REQUEST_URI']; 
  
 	$Secure = $_SERVER['HTTPS'];
 	if ($Secure) {
@@ -391,8 +259,8 @@ function matchproduct(){
 		$catalogFolder = DIR_WS_CATALOG;
 	}
 //  $catalogFolder = DIR_WS_CATALOG;
-  $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
-  $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
 	$pattern = '/^\/prod\d+\.htm(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
