@@ -86,7 +86,7 @@ function mobilematchthis($mainassign)
   
 	$pattern = '/index.php\?main_page=' . $mainassign . '/';
 	preg_match($pattern, $subject, $matches);
-	if ($matches) {
+	if ($matches) { // && file_exists($catalogFolder . '/mobile/' . $mainassign)) { Want to try to verify that file exists.
 		return true;
 	} else {
 		return false;
