@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 
-<h1 id="checkoutShippingHeading">Thank You! We Appreciate your Payment Address Business!</h1>
+<h1 id="checkoutPaymentAddressHeading">Thank You! We Appreciate your Payment Address Business!</h1>
 
 <p style="background:#fff; border:1px solid #ccc; padding:10px; text-align:center; font-weight:bold;">Your order number is <?php echo $orders_id; ?></p>
 

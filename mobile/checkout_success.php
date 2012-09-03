@@ -31,14 +31,14 @@ $define_page = zen_get_file_directory(DIR_WS_LANGUAGES . $_SESSION['language'] .
 //    require($code_page_directory . '/' . $value);
 //  }
 //	$directory_array = $template->get_template_part(DIR_WS_MODULES . 'pages/checkout_success', '/^header_php/');
-	$directory_array = $template->get_template_part($code_page_directory, '/^header_php/');
+//	$directory_array = $template->get_template_part($code_page_directory, '/^header_php/');
 //echo $directory_array . '\n';
-  foreach ($directory_array as $value) { 
+//  foreach ($directory_array as $value) { 
 //    $onload_file = DIR_WS_MODULES . 'pages/checkout_success' . '/' . $value;
 //	echo $onload_file . '/n';
 //	echo $code_page_directory . '/' . $value . '/n';
-	require $code_page_directory . '/' . $value;
-  }
+//	require $code_page_directory . '/' . $value;
+//  }
 ?>
 
 
