@@ -3,8 +3,8 @@
 
 	define('SKIP_SINGLE_PRODUCT_CATEGORIES', 'False');
 	require('includes/application_top.php');
-        $_SESSION['paypal_ec_markflow'] = 1;
-        
+	$_SESSION['paypal_ec_markflow'] = 1;  
+	
 	if(isset($_GET["main_page"]) && $_GET["main_page"] == "login")
 	{
 		unset($_SESSION['paypal_ec_token']);
@@ -22,7 +22,7 @@
  */
 		require($code_page_directory . '/' . $value);
     }
-  
+
 /* Debugging
 $device = $_SERVER['template'];
 echo "this device is a $device";
@@ -96,6 +96,30 @@ function matchcart(){
 	}
 }
 matchcart();
+
+function matchcheckoutprocess(){
+	global $zv_orders_id, $orders_id, $orders, $define_page, $template;
+
+	$requestURI = $_SERVER['REQUEST_URI']; 
+	
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
+	$pattern = '/index.php\?main_page=checkout_process/';
+	preg_match($pattern, $subject, $matches);
+	if ($matches) {
+		include 'mobile/checkoutprocess.php';
+		die();
+	}
+}
+matchcheckoutprocess();	
 
 function matchcheckoutsuccess(){
 	global $zv_orders_id, $orders_id, $orders, $define_page, $template;
@@ -344,4 +368,57 @@ function mobile_image($src)
  
     return $src;
 }
+
+function matchtimeout(){
+	global $db, $zco_notifier, $template;
+ 
+	$requestURI = $_SERVER['REQUEST_URI']; 
+
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
+	$pattern = '/index.php\?main_page=time_out/';
+	preg_match($pattern, $subject, $matches);
+	
+	if ($matches) {
+		include 'mobile/timeout.php';
+		die();
+	}
+
+}
+matchtimeout();
+
+function matchlogin(){
+	global $db, $zco_notifier, $template;
+ 
+	$requestURI = $_SERVER['REQUEST_URI']; 
+
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+  
+	$pattern = '/index.php\?main_page=time_out/';
+	preg_match($pattern, $subject, $matches);
+	
+	if ($matches) {
+		include 'mobile/login.php';
+		die();
+	}
+
+}
+matchlogin();
+
 ?>

@@ -23,7 +23,7 @@ $subcategories = zen_get_categories('', $current_category_id);
 
 <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
 	<?php   for ($i=0;$i<sizeof($subcategories);$i++) { ?>
-		<li data-theme="c" class=""><a data-transition="slide" href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo $subcategories[$i]['text']; ?></a></li>
+		<li data-theme="c" class=""><a data-transition="slide" href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo htmlspecialchars($subcategories[$i]['text']); ?></a></li>
 	<?php } ?>
 </ul>
 
