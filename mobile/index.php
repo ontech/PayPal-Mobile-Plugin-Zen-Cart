@@ -29,7 +29,7 @@ if ($productcheck) {
                                 <a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>"><img class="photo" style="margin-top:3px; margin-left:auto; margin-right:auto;" src="<?php echo htmlspecialchars(mobile_image(DIR_WS_IMAGES . $listing->fields['products_image'])); ?>" width="100"/></a>
                             </td>
                             <td style="text-align: left; width: 120px; white-space: nowrap;">
-                                <form method="post" action="cart/index.php?action=add_product" class="productform">
+								<form method="post" action="cart/index.php?action=add_product" class="productform">
                                     <input type="hidden" name="securityToken" value="<?php echo @$_SESSION['securityToken']; ?>" />
             <!--			<input type="hidden" name="products_id" value="<?php echo $listing->fields['products_id']; ?>"/> -->
             <!--			<input type="hidden" name="cart_quantity" value="1" maxlength="6" size="4"> -->
@@ -96,9 +96,7 @@ if ($productcheck) {
             <?php
             $listing->MoveNext();
 		}
-	
 } else {
-
 	echo '<h1>Welcome</h1>';
 }
 ?>
@@ -106,6 +104,5 @@ if ($productcheck) {
 </ul>
 
 <?php include 'returntodesktop.php' ?>
-
 
 <?php include 'footer.php'; ?>

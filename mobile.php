@@ -14,7 +14,7 @@
   
 	$language_page_directory = DIR_WS_LANGUAGES . $_SESSION['language'] . '/';
 	$directory_array = $template->get_template_part($code_page_directory, '/^header_php/');
-	foreach ($directory_array as $value) { 
+	foreach ($directory_array as $value) {
 /**
  * We now load header code for a given page. 
  * Page code is stored in includes/modules/pages/PAGE_NAME/directory 
@@ -86,7 +86,7 @@ function mobilematchthis($mainassign)
   
 	$pattern = '/index.php\?main_page=' . $mainassign . '/';
 	preg_match($pattern, $subject, $matches);
-	if ($matches) {
+	if ($matches) { // && file_exists($catalogFolder . '/mobile/' . $mainassign)) { Want to try to verify that file exists.
 		return true;
 	} else {
 		return false;
