@@ -11,7 +11,7 @@ if ($productcheck) {
         <li data-role="list-divider">Featured Products</li>
 
         <?php
-		while (!$listing->EOF) {
+        while (!$listing->EOF) {
             ?>
 
             <li style="text-align:center; padding:5px;" class="ui-body-c">
@@ -96,6 +96,7 @@ if ($productcheck) {
             <?php
             $listing->MoveNext();
 		}
+	
 } else {
 
 	echo '<h1>Welcome</h1>';
