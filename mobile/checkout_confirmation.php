@@ -4,7 +4,7 @@
 
 <p style="background:#fff; border:1px solid #ccc; padding:10px; text-align:center; font-weight:bold;">Your order number is <?php echo $orders_id; ?></p>
 
-<?PHP 
+<?php
 include_once (DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
 //echo $code_page_directory . ' <-Code_page_directory<BR/>';
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-    <title><?php echo HOME_PAGE_TITLE; ?></title>
+    <title>Mbl <?php echo HOME_PAGE_TITLE; ?></title>
 
     <link rel="search" type="application/opensearchdescription+xml" href="osd.xml" title="{if MerchantName}{MerchantName} {/if}Site Search"/>
 

@@ -7,7 +7,7 @@ $mobile_category_tree = $main_category_tree->zen_category_tree();
 
 	<div data-role="content" class="ui-content">	
 		<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-		<?php   for ($i=0;$i<sizeof($mobile_category_tree);$i++) { 
+		<?php   for ($i=0;$i<sizeof($mobile_category_tree);$i++) {
 				$pattern= '/^cPath=/'; 
 				if(strpos($mobile_category_tree[$i]['path'], "_")!==false) $pattern = '/^cPath=\d_/' ?>
 			<li class="ui-li ui-li-static ui-body-c"><a data-transition="slide" href="category<?php echo htmlspecialchars(preg_replace($pattern, '', $mobile_category_tree[$i]['path'])); ?>_1.htm?cPath=<?php echo htmlspecialchars(preg_replace('/^cPath=/', '', $mobile_category_tree[$i]['path'])); ?>" class="ui-link"><?php echo $mobile_category_tree[$i]['name']; ?> </a></li>

@@ -17,7 +17,7 @@
 //	include (DIR_WS_MODULES . 'pages/checkout_shipping' . '/' . $value);
 //	include (DIR_WS_MODULES . 'pages/checkout_shipping_address' . '/' . $value);
 ?>
-<?PHP 
+<?php
 /**
  * We now load the html_header.php file. This file contains code that would appear within the HTML <head></head> code 
  * it is overridable on a template and page basis. 
@@ -25,8 +25,9 @@
  */
 //  require($template->get_template_dir('html_header.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/html_header.php');
 ?> 
-<?PHP // $directory_array = $template->get_template_part($code_page_directory, '/^checkout_shipping/');
-//  foreach ($directory_array as $value) { 
+<?php
+// $directory_array = $template->get_template_part($code_page_directory, '/^checkout_shipping/');
+//  foreach ($directory_array as $value) {
 /**
  * We now load header code for a given page. 
  * Page code is stored in includes/modules/pages/PAGE_NAME/directory 
@@ -40,7 +41,7 @@
 //var_dump($directory_array);
 include_once (DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
 //echo $code_page_directory . ' <-Code_page_directory<BR/>';
-//  foreach ($directory_array as $value) { 
+//  foreach ($directory_array as $value) {
 //    $onload_file = DIR_WS_MODULES . 'pages/checkout_success' . '/' . $value;
 //	echo $onload_file . '/n';
 //	echo DIR_WS_MODULES . 'pages/checkout_shipping' . '/' . $value . '<BR/>';
