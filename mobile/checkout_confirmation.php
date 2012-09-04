@@ -14,4 +14,3 @@ include ($template->get_template_dir('tpl_checkout_confirmation_default.php', DI
 ?>
 
 <?php include 'returntodesktop.php' ?>
-

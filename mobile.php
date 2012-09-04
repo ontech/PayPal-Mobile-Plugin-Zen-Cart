@@ -36,7 +36,6 @@ function matchhome(){
 	global $db, $zco_notifier, $template;
  
 	$requestURI = $_SERVER['REQUEST_URI']; 
-//	echo $requestURI . "<BR/>";
 
 	$Secure = $_SERVER['HTTPS'];
 	if ($Secure) {
@@ -44,7 +43,6 @@ function matchhome(){
 	} else {
 		$catalogFolder = DIR_WS_CATALOG;
 	}
-//	echo $catalogFolder . "<BR/>";
 
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
@@ -138,6 +136,56 @@ if (mobilematchthis('checkout_payment_address')) {
 	include 'mobile/checkout_payment_address.php';
 	die();
 }
+
+function matchcheckoutshippingaddress(){
+//	global $zv_orders_id, $orders_id, $orders, $define_page, $template, $code_page_directory;
+	global $messageStack, $process, $error, $addresses_count, $template, $current_page_base, $flag_show_pulldown_states, $selected_country, $zone_id, $state_field_label, $zone_name, $state_field_label, $db;
+
+	$requestURI = $_SERVER['REQUEST_URI']; 
+	
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
+	$pattern = '/index.php\?main_page=checkout_shipping_address/';
+	preg_match($pattern, $subject, $matches);
+	if ($matches) {
+		include 'mobile/checkout_shipping_address.php';
+		die();
+	}
+}
+matchcheckoutshippingaddress();
+
+function matchcheckoutpaymentaddress(){
+//	global $zv_orders_id, $orders_id, $orders, $define_page, $template, $code_page_directory;
+	global $messageStack, $addresses_count, $current_page_base, $template, $process, $flag_show_pulldown_states, $selected_country, $zone_id, $state_field_label, $zone_name, $state_field_label, $db;
+
+	$requestURI = $_SERVER['REQUEST_URI']; 
+	
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
+	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
+	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+
+	$pattern = '/index.php\?main_page=checkout_payment_address/';
+	preg_match($pattern, $subject, $matches);
+	if ($matches) {
+		include 'mobile/checkout_payment_address.php';
+		die();
+	}
+}
+matchcheckoutpaymentaddress();
 
 function matchminicart(){
 	global $template, $currencies;
@@ -278,6 +326,8 @@ if(matchproduct())
 	define('TEXT_PRODUCT_OPTIONS', 'Please Choose: ');
 	define('ATTRIBUTES_PRICE_DELIMITER_PREFIX', ' (');
 	define('ATTRIBUTES_PRICE_DELIMITER_SUFFIX', ') ');
+	define('TEXT_ONETIME_CHARGE_SYMBOL', '');
+	define('TEXT_ONETIME_CHARGE_DESCRIPTION', '');
 	require(DIR_WS_MODULES . zen_get_module_directory(FILENAME_ATTRIBUTES));
 //	require('includes/modules/attributes.php');
 	include 'mobile/product.php';

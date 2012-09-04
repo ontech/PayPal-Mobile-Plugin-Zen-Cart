@@ -44,4 +44,3 @@ Time out function still needs to be fully developed.  At the moment, you have be
 
 
 <?php include 'footer.php'; ?>
-

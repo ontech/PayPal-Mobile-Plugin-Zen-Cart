@@ -10,4 +10,3 @@ include ($template->get_template_dir('tpl_checkout_payment_address_default.php',
 ?>
 
 <?php include 'returntodesktop.php' ?>
-

@@ -95,7 +95,14 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 		<tr><td style="border:none; vertical-align:middle; text-align:left;">
 		<span style="font-size:15px;">
 			<span class="price">
-				<?php echo zen_get_products_display_price($product_info->fields['products_id']) ?>
+				<?php
+				if ($show_onetime_charges_description == 'true') {
+					$one_time = '<span >' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</span><br />';
+				} else {
+					$one_time = '';
+				}
+				echo $one_time . ((zen_has_product_attributes_values((int)$product_info->fields['products_id']) and $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$product_info->fields['products_id']);
+			?>
 			</span>
         </span>
         <br /><?php
