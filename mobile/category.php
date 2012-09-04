@@ -23,7 +23,7 @@ $subcategories = zen_get_categories('', $current_category_id);
 
 <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
 	<?php   for ($i=0;$i<sizeof($subcategories);$i++) { ?>
-		<li data-theme="c" class=""><a data-transition="slide" href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo $subcategories[$i]['text']; ?></a></li>
+		<li data-theme="c" class=""><a data-transition="slide" href="category<?php echo $subcategories[$i]['id'] ?>_1.htm?cPath=<?php echo $current_category_id ?>_<?php echo $subcategories[$i]['id'] ?>"><?php echo htmlspecialchars($subcategories[$i]['text']); ?></a></li>
 	<?php } ?>
 </ul>
 
@@ -102,7 +102,7 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 			</td></tr><tr><td style="border:none; vertical-align:middle;">
 
 			<?php
-			if (zen_has_product_attributes($listing->fields['products_id'])) { 
+			if (zen_has_product_attributes($listing->fields['products_id'])) {
 				echo ' ';
 			} else {
 				if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
@@ -110,12 +110,12 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 				} else {
 					if ($display_button !='') {
 					echo $display_button;
-					?><input type="submit" class="buy" data-theme="e" value="Add to Cart" /><br/><?PHP
+					?><input type="submit" class="buy" data-theme="e" value="Add to Cart" /><br/><?php
 					}
 				} 
 			}
 			?>
-				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;">More info...</a>
+				<a href="prod<?php echo $listing->fields['products_id']; ?>.htm?products_id=<?php echo $listing->fields['products_id']; ?>" class="ui-link" style="color: #2489CE !important; text-shadow: none;"><?php echo MORE_INFO_TEXT; ?></a>
 			</td></tr></table>
 		</form>
 

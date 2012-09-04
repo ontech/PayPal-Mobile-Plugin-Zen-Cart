@@ -1,11 +1,11 @@
 <ul data-role="listview" data-inset="true" class="products ui-listview ui-listview-inset ui-corner-all ui-shadow" style="margin: 4px; width: auto;">
 
-<?php 
+<?php
 $products = $_SESSION['cart']->get_products();
 ?>
 
 
-<?php 
+<?php
 if (($_SESSION['cart']->count_contents()) == 0) {
 ?>
 <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-btn ui-bar-b ui-corner-top ui-btn-up-undefined ui-corner-bottom">Your cart is empty</li>
@@ -69,7 +69,7 @@ for ($i=0;$i<sizeof($products);$i++) {
     </a>
 	</div>
 </li>
-<?php 
+<?php
 }
 ?>
 

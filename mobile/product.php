@@ -27,7 +27,7 @@
 			$catid = preg_replace('[\D]', '', $str);
 			$trailname = $breadcrumb->_trail[$i]['title'];
 		?>
-			<a href="<?php 
+			<a href="<?php
 			if($i==0) {
 				echo './">';
 			} else if($trailname == $theproductname) {
@@ -95,16 +95,23 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 		<tr><td style="border:none; vertical-align:middle; text-align:left;">
 		<span style="font-size:15px;">
 			<span class="price">
-				<?php echo zen_get_products_display_price($product_info->fields['products_id']) ?>
+				<?php
+				if ($show_onetime_charges_description == 'true') {
+					$one_time = '<span >' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</span><br />';
+				} else {
+					$one_time = '';
+				}
+				echo $one_time . ((zen_has_product_attributes_values((int)$product_info->fields['products_id']) and $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$product_info->fields['products_id']);
+			?>
 			</span>
         </span>
-        <br /><?PHP 
+        <br /><?php
 				if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
 				  // do nothing
 				} else {
 					if ($display_button != '') {
-					echo $display_button;
-					?><input type="submit" data-theme="e" value="Add to Cart" /><br/><?PHP
+						echo $display_button;
+						 ?><input type="submit" data-theme="e" value="Add to Cart" /><br/><?php
 					}
 				} ?>
 		</td></tr>
@@ -119,7 +126,7 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 		require($template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE,$current_page_base,'templates'). '/tpl_modules_attributes.php');
 	?>
 		<div style="padding: 0.5em; padding-top: 0.8em;">
-		<?php 
+		<?php
 		$description = $product_info->fields['products_description'];
 		if ($description) {
 			echo $description;

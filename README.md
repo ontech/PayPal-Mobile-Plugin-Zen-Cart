@@ -15,28 +15,36 @@ PayPal Mobile Plugin Installation Instructions
     + h. Use the details from step 2e. and copy and paste the details accross.
     + i. Hit Save.
 
-3. Unpack the contents of the plugin into your public directory except for the includes folder. mobile.php will be in the base of your public directory, while the 'mobile' folder will be subfolder within that.
+3. Unpack the contents of the plugin into your public directory. mobile.php will be in the base of your public directory, while the 'mobile' and 'includes' folder will be subfolders within that.
 
 4. Make a backup of your current .htaccess file inside your public hosting directory - if you have one.
 
-5. Merge mobile.htaccess file with your existing .htaccess file (if you already have one). This contains the mobile user agent detection.
-   Note: If you do not have an existing .htaccess file, then rename the mobile.htaccess to .htaccess
+5. Merge mobile.htaccess file with your existing .htaccess file (if you already have one). The mobile.htaccess file contains the mobile user agent detection.
+   Note: If you do not have an existing .htaccess file, then rename the mobile.htaccess to .htaccess.
 
-6. Check the site is still functional on your desktop computer.
+6. Check the site is still functional on your desktop computer as originally designed.
 
 7. Check the site on your phone and test the transaction flow.
 
 ZenCart Modifications to support Return to Mobile Site after going back to Desktop.
 --------------------------------
-1. The steps above inserted three files into your includes directory to display a sidebox that would display when a mobile user has come back to the desktop.  This allows the user to then return to the mobile site.  These files must be moved so that they are under your own template instead of the YOUR_TEMPLATE path designated.
+1. The steps above inserted three files into your includes directory of your ZenCart store to display a sidebox that would display when a mobile user has come back to the desktop.  This allows the user to then return to the mobile site.  
 
-2. Unpack the ZIP file includes folder into a local directory.
+	The files have been installed to ZenCart default directories so that user intervention is not needed for the installation to work for all templates.  That said, it is in the interest of the site operator to move the following files to the applicable template directory for your template.
 
-3. Search through the folder for YOUR_TEMPLATE and rename the folder to the name of the current template on your ZenCart.
+	In the below paths, substitute YOUR_TEMPLATE with the name of your template, for example if using earthy-boutique then the first file would be moved to:
+	includes/languages/english/extra_definitions/earthy-boutique/ontechpaypalmobilegoto_sidebox_defines.php
+	
+	from: includes/languages/english/extra_definitions/ontechpaypalmobilegoto_sidebox_defines.php
+	to: includes/languages/english/extra_definitions/YOUR_TEMPLATE/ontechpaypalmobilegoto_sidebox_defines.php
+	from: includes/modules/sideboxes/ontechpaypalmobilegoto_sidebox.php
+	to: includes/modules/sideboxes/YOUR_TEMPLATE/ontechpaypalmobilegoto_sidebox.php
+	from: includes/templates/template_default/sideboxes/tpl_ontechpaypalmobilegoto_sidebox.php
+	to: includes/templates/YOUR_TEMPLATE/sideboxes/tpl_ontechpaypalmobilegoto_sidebox.php
 
-4. Copy the includes folder to your ZenCart location.
+2. Login to your ZenCart folder as a user that can access the Tools->Layout Boxes Controller, make the sidebox visible, and relocate the sidebox as desired.
 
-5. Login as your administrator and relocate the sidebox as desired.
+3. Check the site on your phone and test the flow to the desktop view and verify that the sidebox appears as desired, then return to the mobile site.
 
 Revert Installation Instructions
 --------------------------------
