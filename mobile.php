@@ -36,14 +36,25 @@ function matchhome(){
 	global $db, $zco_notifier, $template;
  
 	$requestURI = $_SERVER['REQUEST_URI']; 
-	
-	$catalogFolder = DIR_WS_CATALOG;
+//	echo $requestURI . "<BR/>";
+
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	echo $catalogFolder . "<BR/>";
+
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
+//echo $subject . "<BR/>";
   
 	$pattern = '/^\/(?:$|\?)/';
 	preg_match($pattern, $subject, $matches);
+//	echo $matches . "<BR/>";
 	if ($matches) {
+//		echo "matches<BR/>";
 		return true;
 	}
 	
@@ -53,7 +64,8 @@ function matchhome(){
 if(matchhome())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	include 'mobile/index.php';
 	die();
 }
@@ -66,7 +78,13 @@ function matchcart(){
   
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);  
   
@@ -84,7 +102,13 @@ function matchcheckoutsuccess(){
 
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
@@ -102,7 +126,13 @@ function matchminicart(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -120,7 +150,13 @@ function matchminicartview(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
@@ -138,7 +174,14 @@ function matchcategory(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -164,7 +207,14 @@ function matchcookies() {
 
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -183,7 +233,13 @@ function matchproduct(){
 
   $requestURI = $_SERVER['REQUEST_URI']; 
  
-  $catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//  $catalogFolder = DIR_WS_CATALOG;
   $catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
   $subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
@@ -211,7 +267,14 @@ function matchgallery(){
 	global $template;
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
   
@@ -240,7 +303,13 @@ function matchsearch(){
 	
 	$requestURI = $_SERVER['REQUEST_URI']; 
 	
-	$catalogFolder = DIR_WS_CATALOG;
+	$Secure = $_SERVER['HTTPS'];
+	if ($Secure) {
+		$catalogFolder = DIR_WS_HTTPS_CATALOG;
+	} else {
+		$catalogFolder = DIR_WS_CATALOG;
+	}
+//	$catalogFolder = DIR_WS_CATALOG;
 	$catalogFolder = preg_replace("/\\/$/", "", $catalogFolder);
 	$subject = preg_replace("/".preg_quote($catalogFolder, "/")."/", "", $requestURI);
 
