@@ -53,7 +53,8 @@ function matchhome(){
 if(matchhome())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	include 'mobile/index.php';
 	die();
 }
@@ -154,7 +155,8 @@ function matchcategory(){
 if(matchcategory())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	include 'mobile/category.php';
 	die();
 }
@@ -198,11 +200,13 @@ function matchproduct(){
 if(matchproduct())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	define('TEXT_PRODUCT_OPTIONS', 'Please Choose: ');
 	define('ATTRIBUTES_PRICE_DELIMITER_PREFIX', ' (');
 	define('ATTRIBUTES_PRICE_DELIMITER_SUFFIX', ') ');
-	require('includes/modules/attributes.php');
+	require(DIR_WS_MODULES . zen_get_module_directory(FILENAME_ATTRIBUTES));
+//	require('includes/modules/attributes.php');
 	include 'mobile/product.php';
 	die();
 }
@@ -227,7 +231,8 @@ function matchgallery(){
 if(matchgallery())
 {
 	$select_column_list = 'pd.products_name, p.products_image, ';
-	require('includes/index_filters/default_filter.php');
+	require(zen_get_index_filters_directory('default_filter.php'));
+//	require('includes/index_filters/default_filter.php');
 	include 'mobile/gallery.php';
 	die();
 }
@@ -248,7 +253,8 @@ function matchsearch(){
 	preg_match($pattern, $subject, $matches);
 	if ($matches) {
 		$select_column_list = 'pd.products_name, p.products_image, ';
-		require('includes/index_filters/default_filter.php');
+		require(zen_get_index_filters_directory('default_filter.php'));
+//		require('includes/index_filters/default_filter.php');
 		include 'mobile/search.php';
 		die();
 	}
